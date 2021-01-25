@@ -8,6 +8,39 @@ The ReShade FX shader compiler contained in this repository is standalone, so ca
 ## Fork Notes
 detect high network traffic commented out so the directional depth of field filter and other creative depth filters can be used in Star Citizen alpha for creative screenshots and videos. Star Citizen is not a competitive FPS game with smoke screen bombs so enabling the ability to use depth of field filters should not be a cheating risk for Star Citizen; however, this repo should not be used for any malicious usage or intended usage to cheat or bypass any security measures of any program. Such malicious use is strictly forbidden. This repo fork is solely intended for creative content creation use only.
 
+## Fork Amended Install Notes
+If you are new to programing and Visual Studio like me, getting this working without more complete guidance is a nightmare.
+First thing is first, make sure your Windows PC is git capable.
+Download and install Git for Windows [https://gitforwindows.org/](https://gitforwindows.org/)
+
+Once you clone this repo, Git for Windows shell extension will allow you to right click on the cloned repo folder and run a bash terminal.
+Do that... then run the following two git commands in your repo cloned folder to pull the updates for the submodules:
+
+```git
+git submodule update --init --recursive
+git submodule update --remote
+```
+
+Next to install is Visual Studio 2019 which is free to use and can be downloaded at [https://visualstudio.microsoft.com/](https://visualstudio.microsoft.com/)
+During the install you will get a window asking if you want to install additional tools and features.
+You should install Python Development, Windows Development, Python 3 64-bit and 32-bit, and Windows 10 SDK 10.0.17763.0
+
+This specific Windows 10 SDK is required because of the parent repo.
+After this is installed you will need two additional libraries.
+
+Now that you have installed Python as a feature within Visual Studio, file explore will have a context right click menu to be able to open and run python files.
+Go to your repo then the deps folder, then the gl3w folder. Right click gl3w_gen.py and select **Edit with IDE**. Press F5 to run this module.
+This script will do the following
+```python
+Downloading include/GL/glcorearb.h...
+Downloading include/KHR/khrplatform.h...
+Parsing glcorearb.h header...
+Generating include/GL/gl3w.h...
+Generating src/gl3w.c...
+```
+Which you will need for successfully completing the build directions below.
+
+
 ## Building
 
 You'll need Visual Studio 2017 or higher to build ReShade and Python for the `gl3w` dependency.
