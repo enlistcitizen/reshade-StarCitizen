@@ -5,6 +5,9 @@ This is a generic post-processing injector for games and video software. It expo
 
 The ReShade FX shader compiler contained in this repository is standalone, so can be integrated into other projects as well. Simply add all `source/effect_*.*` files to your project and use it similar to the [fxc example](tools/fxc.cpp).
 
+## Fork Notes
+detect high network traffic commented out so the directional depth of field filter and other creative depth filters can be used in Star Citizen alpha for creative screenshots and videos. Star Citizen is not a competitive FPS game with smoke screen bombs so enabling the ability to use depth of field filters should not be a cheating risk for Star Citizen; however, this repo should not be used for any malicious usage or intended usage to cheat or bypass any security measures of any program. Such malicious use is strictly forbidden. This repo fork is solely intended for creative content creation use only.
+
 ## Building
 
 You'll need Visual Studio 2017 or higher to build ReShade and Python for the `gl3w` dependency.
