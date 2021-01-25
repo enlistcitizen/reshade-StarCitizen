@@ -580,8 +580,8 @@ void reshade::vulkan::runtime_vk::on_present(VkQueue queue, uint32_t swapchain_i
 	}
 
 #if RESHADE_DEPTH
-	update_depth_image_bindings(_has_high_network_activity ? state_tracking::depthstencil_info {} :
-		_state_tracking.find_best_depth_texture(VkExtent2D { _width, _height }, _depth_image_override));
+#	update_depth_image_bindings(_has_high_network_activity ? state_tracking::depthstencil_info {} :
+#		_state_tracking.find_best_depth_texture(VkExtent2D { _width, _height }, _depth_image_override));
 #endif
 
 	update_and_render_effects();
@@ -2496,11 +2496,11 @@ void reshade::vulkan::runtime_vk::draw_depth_debug_menu()
 	if (!ImGui::CollapsingHeader("Depth Buffers", ImGuiTreeNodeFlags_DefaultOpen))
 		return;
 
-	if (_has_high_network_activity)
-	{
-		ImGui::TextColored(ImColor(204, 204, 0), "High network activity discovered.\nAccess to depth buffers is disabled to prevent exploitation.");
-		return;
-	}
+#	if (_has_high_network_activity)
+#	{
+#		ImGui::TextColored(ImColor(204, 204, 0), "High network activity discovered.\nAccess to depth buffers is disabled to prevent exploitation.");
+#		return;
+#	}
 
 	if (ImGui::Checkbox("Use aspect ratio heuristics", &_state_tracking.use_aspect_ratio_heuristics))
 		runtime::save_config();
@@ -2549,8 +2549,8 @@ void reshade::vulkan::runtime_vk::draw_depth_debug_menu()
 
 void reshade::vulkan::runtime_vk::update_depth_image_bindings(state_tracking::depthstencil_info info)
 {
-	if (_has_high_network_activity)
-		info = state_tracking::depthstencil_info {};
+#	if (_has_high_network_activity)
+#		info = state_tracking::depthstencil_info {};
 
 	if (info.image == _depth_image)
 		return;

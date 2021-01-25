@@ -1599,7 +1599,7 @@ void reshade::runtime::draw_gui_statistics()
 			ImGui::TextUnformatted("Unknown");
 		ImGui::TextUnformatted(g_target_executable_path.filename().u8string().c_str());
 		ImGui::Text("%d-%d-%d %d", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour * 3600 + tm.tm_min * 60 + tm.tm_sec);
-		ImGui::Text("%u B", g_network_traffic);
+#		ImGui::Text("%u B", g_network_traffic);
 		ImGui::Text("%.2f fps", _imgui_context->IO.Framerate);
 		ImGui::Text("%*.3f ms CPU", cpu_digits + 4, post_processing_time_cpu * 1e-6f);
 
