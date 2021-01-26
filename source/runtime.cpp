@@ -231,7 +231,7 @@ void reshade::runtime::on_present()
 	//}
 
 	// Reset frame statistics
-	g_network_traffic = 0; // investigate variable in mem
+	g_network_traffic = 0;
 }
 
 bool reshade::runtime::load_effect(const std::filesystem::path &source_file, const reshade::ini_file &preset, size_t effect_index, bool preprocess_required)

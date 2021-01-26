@@ -36,7 +36,7 @@ static bool is_local_socket(SOCKET s)
 }
 
 volatile long g_network_traffic = 0;
-# investigate
+
 HOOK_EXPORT int WSAAPI HookWSASend(SOCKET s, LPWSABUF lpBuffers, DWORD dwBufferCount, LPDWORD lpNumberOfBytesSent, DWORD dwFlags, LPWSAOVERLAPPED lpOverlapped, LPWSAOVERLAPPED_COMPLETION_ROUTINE lpCompletionRoutine)
 {
 	if (!is_local_socket(s))
