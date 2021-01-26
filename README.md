@@ -86,6 +86,13 @@ A quick overview of what some of the source code files contain:
 |[opengl/runtime_gl.cpp](source/opengl/runtime_gl.cpp)     |Effect runtime implementation for OpenGL                               |
 |[vulkan/runtime_vk.cpp](source/vulkan/runtime_vk.cpp)     |Effect runtime implementation for Vulkan                               |
 
+## ReShade For Star Citizen
+
+Congradulations! You have successfully made your ReShade build. Now either install it {*did you do a virus check? if not do one on* [https://www.virustotal.com/gui/](https://www.virustotal.com/gui/)} or if you already installed the stock ReShade and just need the dll go to your `reshade-StarCitizen\bin\x64\Release` folder and copy `ReShade64.dll` over to your ReShade files in your Star Citizen Bin64 folder. Rename this copied `ReShade64.dll` file to `d3d11.dll` so that Star Citizen will load ReShade. A recent update to both Windows and ReShade made things funky to where even stock ReShade will not work unless you rename the dll and log file to d3d11
+
+If you used your own Build EXE just rename the installed dll and log files to `d3d11` and you will be good to go!
+Enjoy and happy Star Citizen Screenshot making!
+
 ## Contributing
 
 Any contributions to the project are welcomed, it's recommended to use GitHub [pull requests](https://help.github.com/articles/using-pull-requests/).
