@@ -13,12 +13,14 @@ If you are new to programing and Visual Studio like me, getting this working wit
 First thing is first, make sure your Windows PC is git capable.
 Download and install Git for Windows [https://gitforwindows.org/](https://gitforwindows.org/)
 
-Once you clone this repo, Git for Windows shell extension will allow you to right click on the cloned repo folder and run a bash terminal.
-Do that... then run the following two git commands in your repo cloned folder to pull the updates for the submodules:
+Now download and use your Git GUI of choice. I like GitHub Desktop from GitHub. This will be easier to use than manually using Git for Windows to clone this repo onto your computer. Once your favorite Git GUI is installed, clone this repo into a working folder near or at the root of your working storage drive. I don't use my operating system drive for anything other than operating system stuff. But if you have only one drive, you can also use a large and fast USB stick for everything we are about to do, if you wish.
+
+Once you clone this repo, Git for Windows shell extension will allow you to right click on any git folder and run a bash terminal.
+You can do the following for good measure. Go to the Repo you fetched, to do the DEP folder, right click open bash terminal here.
+Then run the following git command in your repo DEP folder to pull the updates for the submodules:
 
 ```git
 git submodule update --init --recursive
-git submodule update --remote
 ```
 
 Next to install is Visual Studio 2019 which is free to use and can be downloaded at [https://visualstudio.microsoft.com/](https://visualstudio.microsoft.com/)
@@ -26,19 +28,31 @@ During the install you will get a window asking if you want to install additiona
 You should install Python Development, Windows Development, Python 3 64-bit and 32-bit, and Windows 10 SDK 10.0.17763.0
 
 This specific Windows 10 SDK is required because of the parent repo.
-After this is installed you will need two additional libraries.
 
-Now that you have installed Python as a feature within Visual Studio, file explore will have a context right click menu to be able to open and run python files.
-Go to your repo then the deps folder, then the gl3w folder. Right click gl3w_gen.py and select **Edit with IDE**. Press F5 to run this module.
-This script will do the following
-```python
-Downloading include/GL/glcorearb.h...
-Downloading include/KHR/khrplatform.h...
-Parsing glcorearb.h header...
-Generating include/GL/gl3w.h...
-Generating src/gl3w.c...
+Now that you have installed Git for Windows, Visual Studio 2019 or newer, Windows 10 SDK 10.0.17763.0, Windows and Python development tools....
+We have two things left to do before moving onto to the directions below to make your first build!
+
+We are going to test if Python is installed and declared properly in Windows 10.
+Open command prompt at type
+```cmd
+python
 ```
-Which you will need for successfully completing the build directions below.
+Does anything happen other than a not found warning? if so, you are good to move onto the next last step. If not, we have some work to do.
+
+Now type in command prompt
+```cmd
+py
+```
+Does anything happen? Either way, we need to install Python for windows in your particular Windows enviornment.
+Even though we already installed Python through Visual Studio 2019 and have the option to edit py files in an editor via right click content menu, we need Python to work with the command python within command prompt in order to have a successful build within Visual Studio 2019... in a dummy proof manner.
+Go to [https://www.python.org/downloads/windows/](https://www.python.org/downloads/windows/) and download the most recent installer version of Python and make sure to match your Operating System's x32 or x64... most gaming PCs will be x64 bit.
+
+Now install this newest Python version right next to your previous Python installation in `Microsoft Visual Studio\Shared\` or whever your previous Python was installed by Visual Studio. Visual Studio 2019 will not install the most recent Python for Windows builds and you can have more than one build on your system, our only goal here is to get the `python` command working. During the Python for Windows install it will present you some options. Enable Python for all users and enable the launcher option, the rest of the options are at your discretion. Once this install is complete, open command prompt and type `python`. if it prints out an option to type help, you have success! Now close command prompt and move onto the last step.
+
+Now to get ready for your build. Launch Visual Studio 2019, it will ask you to open a project. Navigate to your forked repo and open the `ReShade.sln` file.
+You will have an overwhelming interface at first if you are new to this. But if you have any experince making websites or using photoshop or after effects, you will be able to figure this out. Click over near the top right on your main Reshade Solution in that right window. Do not select the project files which are lower in that list. Right click your main ReShade Solution and select **Retarget**. A popup with give you the option for two things to do to all project files. Update the Platform Toolset and/or update the Windows SDK Version. Do not update the Windows SDK Version.. make sure in that drop down you select No Uprade. In the Platform Toolset make sure it selected to upgrade to your most recent version number (highest number) and make sure everything below is check marked. Click Ok.
+
+You are now ready to start building!!! Make sure in the top middle of your Visual Studio screen that you select Release and 32-bit FIRST.. build it. If it fails, review your output log and fix whatever is wrong. Google is your friend. Then ReBuild, until you have a build with ZERO failures. Then select the 64-bit on the drop down and build. If your first build at 32-bit did not fail, you should be clear sailing all the way. Once both of those Release builds are done, you can then do `Release Setup` and 64-bit for your own EXE package. I don't take any responsibility if you screw things up, this is at your own risk and you should do some reading to be familiar with all I have shared. This is self help stuff, and this is what I discovered from my Journey. Enjoy and happy Star Citizen Screenshot making!
 
 
 ## Building
